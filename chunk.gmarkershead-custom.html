@@ -1,0 +1,102 @@
+<script type="text/javascript" src="[[+gmarker_url]]"></script>
+
+<script type="text/javascript">
+[[$infoBox-custom]]
+
+var color_map = [
+    {"featureType":"water","elementType":"geometry","stylers":[{"color":"#deeafb"},{"lightness":17}]},
+    {"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#fdfcf3"},{"lightness":10}]},
+    {"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#bbbbbb"},{"lightness":17}]},
+    {"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#f2f2f2"},{"lightness":29},{"weight":0.2}]},
+    {"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#f2f2f2"},{"lightness":18}]},
+    {"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#dddddd"},{"lightness":16}]},
+    {"featureType":"poi","elementType":"geometry","stylers":[{"color":"#f2f2f2"},{"lightness":21}]},
+    {"elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#f2f2f2"},{"lightness":16}]},
+    {"elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#666666"},{"lightness":40}]},
+    {"elementType":"labels.icon","stylers":[{"visibility":"off"}]},
+    {"featureType":"transit","elementType":"geometry","stylers":[{"color":"#bbbbbb"},{"lightness":19}]},
+    {"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#cccccc"},{"lightness":20}]},
+    {"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#cccccc"},{"lightness":17},{"weight":1.2}]}
+    ];
+
+	/**
+	 * Used by the Gmarker Extra
+	 */
+
+	var Gmarker = {
+
+		init: function() {
+		 	this.gmarkers = [];
+		 	this.gmarker_construct();
+		},
+
+		gmarker_construct: function() {
+			// Reused by all markers
+			
+			var infowindow = new google.maps.InfoWindow();	
+		
+			// Lat/Lng of map center
+			var myLatlng = new google.maps.LatLng([[+latlng]]);
+			
+			var mapOptions = {
+				zoom: [[+zoom]],
+				center: myLatlng,
+				styles: color_map,
+				mapTypeId: google.maps.MapTypeId.[[+type]]
+			}
+			
+			// Draw my map
+			var myMap = new google.maps.Map(document.getElementById("[[+id]]"), mapOptions);
+			
+			// Default shadow image
+			var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+				new google.maps.Size(40, 37),
+				new google.maps.Point(0, 0),
+				new google.maps.Point(12, 35));
+			
+			// Loop over the markers.
+			[[+markers]]
+		},
+
+		loop_markers: function(category, marker) {
+			for (var i=0; i<this.gmarkers.length; i++) {
+          		if (this.gmarkers[i].mycategory == category) {
+	            	this.gmarkers[i].setVisible(marker);
+	          	}
+	        };
+		},
+
+		show_marker: function(category,marker) {
+			marker = true;
+			this.loop_markers(category,marker);
+		}, 
+
+		hide_marker: function(category, marker) {
+			marker = false;
+			this.loop_markers(category,marker);
+		}
+	};
+
+      // == a checkbox has been clicked ==
+      function category_click(box, category) {
+        if (box.checked) {
+        	Gmarker.show_marker(category);
+        } else {
+         	Gmarker.hide_marker(category);
+        }
+
+      }
+
+	window.onload = function() {
+		 Gmarker.init();
+	}
+
+</script>
+
+<style>
+#[[+id]] {
+	height: [[+h]]px;
+	width: [[+w]]%;
+}
+[[+hide_shadow]]
+</style>
