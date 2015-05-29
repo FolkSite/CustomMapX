@@ -50,6 +50,16 @@ Custom Function for InfoBox Popup. These Images can be changed.
 1. line 81 - `div.style.background = "url('assets/app/img/map-bubble.png')";` 
 2. line 98 - `closeImg.src = "assets/app/img/closebigger.gif";`
 
+---
+
+##Template Variables
+
+![template variables](https://dl.dropboxusercontent.com/u/4277345/MODX/CustomMapX/custom-map-tv.png)
+
+Set up these TVs for the resources your going to pull
+
+---
+
 ##Call it
 
 `&latlng` should be your center
