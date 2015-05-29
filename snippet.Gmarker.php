@@ -283,7 +283,7 @@ $modx->lexicon->load('gmarker:default');
 //------------------------------------------------------------------------------
 //! Inline Custom Values
 
-$GmarkerUrl = "http://maps.google.com/maps/api/js?sensor=false&key=AIzaSyBOhX3Sx3rbBceyYmgApNDyTFKuYWm12QY";
+$GmarkerUrl = "http://maps.google.com/maps/api/js?sensor=false&key=API_KEY";
 $lat_tv = "latitude";
 $lng_tv = "longitude";
 $formatting_string = "[[+address]], [[+city]], [[+state]]";
