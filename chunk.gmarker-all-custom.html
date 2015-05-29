@@ -1,0 +1,26 @@
+var markerLatlng[[+idx]] = new google.maps.LatLng([[+tv.latitude]],[[+tv.longitude]]);
+var marker[[+idx]] = new google.maps.Marker({
+	"position": markerLatlng[[+idx]],
+	"map": myMap,
+	"draggable":false,
+	"title":"[[+pagetitle]]",
+	[[+drop]]
+	"icon": '[[++site_url]][[+tv.map_marker]]',
+	[[+shadow]]
+});
+[[+info]]
+marker[[+idx]].mycategory = [[+group_json]]; 
+this.gmarkers.push(marker[[+idx]]);
+marker[[+idx]].setVisible(true);
+
+//set marker hover
+google.maps.event.addListener(marker[[+idx]], 'mouseover', function() {
+  marker[[+idx]].setIcon("[[++site_url]][[+tv.map_marker_hover]]"); 
+});
+
+[[+tv.map_marker:notempty=`
+//set marker back
+google.maps.event.addListener(marker[[+idx]], 'mouseout', function() {
+  marker[[+idx]].setIcon("[[++site_url]][[+tv.map_marker]]"); 
+});
+`]]    
