@@ -50,6 +50,12 @@ Custom Function for InfoBox Popup. These Images can be changed.
 1. line 81 - `div.style.background = "url('assets/app/img/map-bubble.png')";` 
 2. line 98 - `closeImg.src = "assets/app/img/closebigger.gif";`
 
+**gresult**
+
+Basic listing type results good for debugging
+
+Add `&showResults=1` to the Gmarker Snippet call
+
 ---
 
 ##Template Variables
