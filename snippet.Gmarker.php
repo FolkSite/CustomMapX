@@ -1,3 +1,4 @@
+<?php 
 class Gmarker {
 
 	public $cache_opts = array(xPDO::OPT_CACHE_KEY => 'gmarker');
