@@ -13,12 +13,12 @@ marker[[+idx]].mycategory = [[+group_json]];
 this.gmarkers.push(marker[[+idx]]);
 marker[[+idx]].setVisible(true);
 
+[[+tv.map_marker_hover:notempty=`
 //set marker hover
 google.maps.event.addListener(marker[[+idx]], 'mouseover', function() {
   marker[[+idx]].setIcon("[[++site_url]][[+tv.map_marker_hover]]"); 
 });
 
-[[+tv.map_marker:notempty=`
 //set marker back
 google.maps.event.addListener(marker[[+idx]], 'mouseout', function() {
   marker[[+idx]].setIcon("[[++site_url]][[+tv.map_marker]]"); 
